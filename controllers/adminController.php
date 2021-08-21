@@ -61,7 +61,7 @@
             $pagina = strtolower(trim($pagina));
 
             $moduloTest = [ "m_test/main"];
-            $arrayPaginas = [ "login", "registrate", "web"];
+            $arrayPaginas = [ "login", "registrate", "web", "consulta"];
 
             $arrayPaginas = array_merge($arrayPaginas, $moduloTest);
 

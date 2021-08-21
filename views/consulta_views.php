@@ -23,7 +23,7 @@
 
         <!-- PAGINA CONTENIDO -->
 
-        <h1>HELLO WORLD, THIS PAGE IS READY!!</h1>
+        <h1>PAGE FOR CONSULT THE STATE INSCRIPTION</h1>
 
 
 
@@ -44,7 +44,7 @@
             include_once("./views/_partials/cdns_footer.html");
         ?>
         <!-- SCRIPTS FOR THIS PAGE -->
-        <script src="./views/__js/js_web.js"></script>
+        <script src="./views/__js/js_consulta.js"></script>
 
 
 
