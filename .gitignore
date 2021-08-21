@@ -1,0 +1,5 @@
+resources/*
+
+core/appConfig.php
+core/appRoutes.php
+core/mainModel.php
