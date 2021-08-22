@@ -14,6 +14,36 @@
         /**
          * 
          */
+        protected function consultaInscripcion_Model($data){
+
+            $eval = false;
+            $msj = "No se encontró registro!";
+            $data_res = [];
+
+            $query = "SELECT * 
+                        FROM adm_proceso_postulante p 
+                        WHERE p.numerodocumento LIKE '%{$data->numerodocumento}%' 
+                        AND p.proceso IN ('{$data->proceso[0]}','{$data->proceso[1]}','{$data->proceso[2]}') 
+                    ";
+
+            $res = mainModel::ejecutar_una_consulta($query);
+            $rowCount = $res->rowCount();
+            if($res->rowCount() >= 1){
+                $msj = "Se encontró registro";
+                $eval = true;
+                while ($register = $res->fetch(PDO::FETCH_ASSOC)) {
+                    # code...
+                    $data_res[] = $register;
+                }
+            }
+
+            return ["eval"=>$eval, "data"=>$data_res, "msj"=>$msj, "rowCount"=>$rowCount];
+        }
+
+
+        /**
+         * 
+         */
         protected function loginUsuario_Model($data){
             $eval = false;
             $msj = "Error en el Login!";

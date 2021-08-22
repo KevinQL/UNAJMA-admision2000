@@ -1,3 +1,25 @@
+.consult_views {
+  background-image: url(../../__assets/images/bg_consult.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: steelblue;
+}
 
+.k_sections {
+  height: 90vh;
+}
+
+.k_bg-transparent {
+  background: rgba(110, 110, 110, 0.048);
+}
+
+.khead-consult {
+  background: rgba(0, 102, 255, 0.082);
+  border: none;
+  border-radius: 10px;
+  margin: 5px 0px;
+}
 
 /*# sourceMappingURL=styles.css.map */

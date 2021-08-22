@@ -1,6 +1,11 @@
-console.log("CARGADO => main.js");
+console.log("CARGADO => routes.js");
+
+
 
 // VARIABLES GLOBALES
+const URL_PROCESS_MAIN = "./aprocess/mainProcess.php";
+
+
 const URL_AJAX_PROCESAR = "./ajax/procesarAjax.php";
 const URL_PRUEBA = "./ajax/pruebaAjax.php"
 // const URL_AJAX_PDF = "./ajax/procesarPDF.php";

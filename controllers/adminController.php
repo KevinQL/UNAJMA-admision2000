@@ -11,6 +11,23 @@
     class adminController extends adminModel {
 
 
+        /**
+         * 
+         */
+        public function consultaInscripcion_Controller($data){
+            $dataModel = new StdClass;
+            $dataModel->numerodocumento = trim($data->txt_dniv);
+            $dataModel->proceso[] = '0024';
+            $dataModel->proceso[] = '0025';
+            $dataModel->proceso[] = '0026';
+
+            $res = self::consultaInscripcion_Model($dataModel);
+            return $res;
+        }
+
+        /**
+         * 
+         */
         public function loginUsuario_Controller($data){
             $dataModel = new stdClass;
             $dataModel->email = $data->emailv;
@@ -61,7 +78,7 @@
             $pagina = strtolower(trim($pagina));
 
             $moduloTest = [ "m_test/main"];
-            $arrayPaginas = [ "login", "registrate", "web", "consulta"];
+            $arrayPaginas = [ "login", "registrate", "web", "consult"];
 
             $arrayPaginas = array_merge($arrayPaginas, $moduloTest);
 
