@@ -1,4 +1,4 @@
-resources/*
+_resources/*
 
 core/appConfig.php
 core/appRoutes.php
