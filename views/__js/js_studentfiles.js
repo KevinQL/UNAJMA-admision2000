@@ -1,2 +1,3 @@
-console.log("loading js_studentfiles.js")
-alert("loading js_studentfiles.js")
+console.log('loading ./views/__js/js_studentfiles.js');
+
+

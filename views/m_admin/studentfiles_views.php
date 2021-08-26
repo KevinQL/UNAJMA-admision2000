@@ -26,15 +26,15 @@
 
         <!-- PAGINA CONTENIDO -->
 
-<!-- NAV DEFEAULT -->
+        <!-- NAV DEFEAULT -->
 
-<nav class="navbar navbar-light k_bg-transparent py-2">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="./views/__assets/icons/check.png" alt="" width="30" height="24">
-    </a>
-  </div>
-</nav>
+        <nav class="navbar navbar-light k_bg-transparent py-2">
+            <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="./views/__assets/icons/check.png" alt="" width="30" height="24">
+            </a>
+            </div>
+        </nav>
 
 
 
