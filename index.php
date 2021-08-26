@@ -15,7 +15,7 @@
     /**
      * Evalua si se inicion la variable global SESSION[]
      */
-    $session = $obj_admin->verificarSessionController();
+    $session = $obj_admin->verificarSessionController(false);
     
     /**
      * metodo de la clase adminController

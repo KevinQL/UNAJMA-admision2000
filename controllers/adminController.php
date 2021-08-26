@@ -62,9 +62,15 @@
          * VERIFICADO
          * (IMPORTANTE)
          */
-        public function verificarSessionController(){
-            $session = (isset($_SESSION['start']) && !empty($_SESSION['start']) &&!is_null($_SESSION)) ? true:false;
-            return $session;
+        public function verificarSessionController($isexecute){
+            // var_dump($isexecute);
+            if($isexecute){
+                $session = (isset($_SESSION['start']) && !empty($_SESSION['start']) &&!is_null($_SESSION)) ? true:false;
+                return $session;
+
+            }else{
+                return true;
+            }
         }
 
 
@@ -88,6 +94,10 @@
                 //por si es 'login'. cambiamos a 'main'
                 $pagina = ($pagina != "login")? $pagina : "redirect_default"; //Agregado ultimo
 
+                $mod_admin = ["m_admin/studentfiles"];
+
+                $arrayPaginas = array_merge($arrayPaginas, $mod_admin);
+
                 //Validando niveles de seguridad. 
                 if($_SESSION['data']['tipo_usuario'] == 1){
                     //[1]:NIVEL ADMINISTRADOR
@@ -105,8 +115,12 @@
                     $arr_modules = [ "closed","main", "plantilla"  ];    
                 }
 
+                
                 $arrayPaginas = array_merge($arrayPaginas, $arr_modules);
                 
+                // var_dump($arrayPaginas);
+                // var_dump($pagina);
+
                 /**
                  * Solo en caso de que esté logueado; verifica pagina seleccionada, y luego lo redirige.
                  * Si no coincide con ninguna página, te ridirecciona a la página de main.php

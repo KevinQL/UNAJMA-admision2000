@@ -23,6 +23,10 @@
      */
     $conAjax = false;
 
+    /**
+     * Scripts main PHP 
+     */
+    require_once("./main_scripts.php");
 
     /**
      * Requerimos los archivos con las clases y los metodos necesarios para la elaboración 
