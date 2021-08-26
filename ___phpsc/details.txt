@@ -1,0 +1,7 @@
+## Usar esta linea para crear archivos autimatizados con php dentro de una carpeta
+> php -f ./___phpsc/run.php -- [m_name] [namefile]
+
+## tambine se pude usar la siguiente instrucción para crear los archivos el parte principal del proyecto
+> php -f ./___phpsc/run.php -- [namefile]
+
+##
