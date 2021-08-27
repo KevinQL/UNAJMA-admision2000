@@ -1,4 +1,35 @@
-console.log('loading ./views/__js/js_studentfiles.js');
+    console.log('loading ./views/__js/js_studentfiles.js');
+
+
+
+    function upload_filestudent(typefile, urldir) {
+        /**
+         * type file
+         * url dir
+         * FILE 
+         * ID
+         */
+        event.preventDefault();
+        let filestudent = document.querySelector("#base64");
+
+        filestudent = filestudent.value;
+
+        fetchFileKev("POST",
+            {
+                id:"saved-studentfiles",
+                filestudent,
+                typefile,
+                urldir
+            },{
+
+            },
+            res => {
+                console.log(res)
+            },
+            URL_PROCESS_MAIN
+        );
+    }
+
 
 
 

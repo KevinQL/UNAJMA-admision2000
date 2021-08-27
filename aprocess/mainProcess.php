@@ -8,48 +8,9 @@
         //Instancias del objeto controller
         $obj = new adminController();
 
-        //Regitro usuario para la administración del sistema 
-        if ($data->id === "exe-certificado") {
-            # code...
-
-            if(!empty($data->h_captcha)){
-
-                $data_hc = [
-                    "secret" => "0x28899D6c004BBBB2489d955c4F2514cc94940a73",
-                    "response" => $data->h_captcha
-                ];
-
-                $verify = curl_init();
-                curl_setopt($verify, CURLOPT_URL, "https://hcaptcha.com/siteverify");
-                curl_setopt($verify, CURLOPT_POST, true);
-                curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data_hc));
-                curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
-
-                $response = curl_exec($verify);
-                $responseData = json_decode($response);
-                $res["response_hcaptcha"] = $responseData;
-            
-                if($responseData->success){
-                    $resServer = $obj->consultaData_Controller($data);
-                    $res["eval"] = $resServer["eval"];
-                    $res["data"] = $resServer["data"];
-                    $res["msj"] = $resServer["msj"];
-
-                    unset($resServer);
-                }else{
-                    $res["msj"] = "Tiene que volver ha realizar el captcha";
-                }
-                
-            }else{
-                $res["msj"] = "No se resolvio el captcha";
-            }
-            
-            unset($data);
-            unset($obj);
-            echo json_encode($res);
-        }
-
-        elseif ($data->id === "consult-inscripcion") {
+        
+        //
+        if ($data->id === "consult-inscripcion") {
             # code...
 
             if( !empty($data->hcaptcha) ){
@@ -99,6 +60,27 @@
             echo json_encode($res);
         }
 
+
+        elseif ($data->id === "saved-studentfiles") {
+            # code...
+            /**
+             * file type (img or pdf) 
+             * route to saved img (name dir put img or pdf)
+             * the elemento - img $_FILE
+             * 
+             */
+            $file_img = explode(",",$data->filestudent);
+            $file_img = $file_img[1];
+            $file_img = base64_decode($file_img);
+            $ruta_name = "./prueba.jpg";
+            
+            file_put_contents($ruta_name, $file_img);
+            
+            echo json_encode($data);
+
+        }
+
+        /** funcionality basic */
         elseif ($data->id === "login") {
             # code...
             $res = $obj->loginUsuario_Controller($data); //

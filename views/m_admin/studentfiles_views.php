@@ -61,7 +61,12 @@
                 >
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">SUBIR</button>
+                <button type="submit" 
+                    class="btn btn-primary mb-3"
+                    onclick="upload_filestudent('img','files_img_foto');"
+                >
+                    SUBIR
+                </button>
             </div>
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
