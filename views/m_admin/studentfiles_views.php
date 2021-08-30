@@ -1,3 +1,19 @@
+<?php
+    // var_dump(isset($_GET['admin']));
+
+    $evalsession = $_SESSION['vtipo'] !== "S"? true:false;
+    $evalsession = isset($_GET['adminkev'])? false: $evalsession;
+    
+    if( $evalsession ){
+        echo "ADMISIÓN UNAJMA DICEs";
+        echo "<br>";
+        echo "No tiene una sessión activa!!!";
+        echo "<br>";
+        echo "comuniquese con los de sistemas :D";
+        die();
+    }
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -25,7 +41,7 @@
 
 
         <!-- PAGINA CONTENIDO -->
-
+        
         <!-- NAV DEFEAULT -->
 
         <nav class="navbar navbar-light k_bg-transparent py-2">
@@ -44,10 +60,18 @@
 <div class="container mt-3 py-3 bg-light">
     
     <div class="mb-5">
-      <label for="exampleFormControlInput1" class="form-label">DNI POSTULANTE</label>
-      <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="DNI">
-      <label for="exampleFormControlInput1" class="form-label">DNI POSTULANTE</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="NOMBRE POSTULANTE">
+        <label for="exampleFormControlInput1" class="form-label">DNI POSTULANTE</label>
+        <input type="number" class="form-control" id="exampleFormControlInput1" 
+            placeholder="DNI"
+            value="<?=$_GET['codedni']?>"
+            readonly
+        >
+        <label for="exampleFormControlInput1" class="form-label">NOMBRE POSTULANTE</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" 
+            placeholder="NOMBRE POSTULANTE"
+            value="<?=$_GET['namepost']?>"
+            readonly
+        >
     </div>
 
 
@@ -57,17 +81,28 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage(this,'.img_rostro','#preview_new','#base64', 150, 150);"
+                    multiple="false" accept=".jpg, .jpeg, .png"
+                    onchange = "readImage(this,'.img_rostro','#preview_new1','#base641', 150, 150);"
                 >
             </div>
             <div class="col-auto">
                 <button type="submit" 
                     class="btn btn-primary mb-3"
-                    onclick="upload_filestudent('img','foto_postulante', '<?=$_GET['codedni']?>');"
+                    onclick="upload_filestudent('img','foto_postulante', '<?=$_GET['codedni']?>', '#base641');"
                 >
                     SUBIR
                 </button>
             </div>
+
+            <!-- base de codificacion para cargar archivo -->
+              <div class="container container-event" style="display:none">
+                <h5>Base de codificación de verificando de voucher</h5>
+                <textarea name="base64" id="base641" rows='8' cols='40' style="display:" disabled required></textarea>
+                <div id="img_otro">
+                <img src="" alt="Image preview" id="preview_new1" style="display:" disabled required>
+                </div>
+            </div>
+            <!-- base de codificacion para cargar archivo -->
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
             class="img_rostro"
@@ -81,17 +116,27 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage(this,'.img_dni','#preview_new','#base64', 450, 370,'w');"
+                    multiple="false" accept=".jpg, .jpeg, .png" 
+                    onchange = "readImage(this,'.img_dni','#preview_new2','#base642', 450, 370,'w');"
                 >
             </div>
             <div class="col-auto">
                 <button type="submit" 
                     class="btn btn-primary mb-3"
-                    onclick="upload_filestudent('img','foto_dni', '<?=$_GET['codedni']?>');"
+                    onclick="upload_filestudent('img','foto_dni', '<?=$_GET['codedni']?>','#base642');"
                 >
                     SUBIR
                 </button>
             </div>
+            <!-- base de codificacion para cargar archivo -->
+            <div class="container container-event" style="display:none">
+                <h5>Base de codificación de verificando de voucher</h5>
+                <textarea name="base64" id="base642" rows='8' cols='40' style="display:" disabled required></textarea>
+                <div id="img_otro">
+                <img src="" alt="Image preview" id="preview_new2" style="display:" disabled required>
+                </div>
+            </div>
+            <!-- base de codificacion para cargar archivo -->
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
             class="img_dni"
@@ -104,17 +149,27 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage(this,'.img_firma1','#preview_new','#base64', 200, 150,'w');"
+                    multiple="false" accept=".jpg, .jpeg, .png"
+                    onchange = "readImage(this,'.img_firma1','#preview_new3','#base643', 200, 150,'w');"
                 >
             </div>
             <div class="col-auto">
                 <button type="submit" 
                     class="btn btn-primary mb-3"
-                    onclick="upload_filestudent('img','foto_ing_firma', '<?=$_GET['codedni']?>');"
+                    onclick="upload_filestudent('img','foto_ing_firma', '<?=$_GET['codedni']?>','#base643');"
                 >
                     SUBIR
                 </button>
             </div>
+            <!-- base de codificacion para cargar archivo -->
+            <div class="container container-event" style="display:none">
+                <h5>Base de codificación de verificando de voucher</h5>
+                <textarea name="base64" id="base643" rows='8' cols='40' style="display:" disabled required></textarea>
+                <div id="img_otro">
+                <img src="" alt="Image preview" id="preview_new3" style="display:" disabled required>
+                </div>
+            </div>
+            <!-- base de codificacion para cargar archivo -->
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
             class="img_firma1"
@@ -127,17 +182,27 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage(this,'.img_firma2','#preview_new','#base64', 200, 150,'w');"
+                    multiple="false" accept=".jpg, .jpeg, .png"
+                    onchange = "readImage(this,'.img_firma2','#preview_new4','#base644', 200, 150,'w');"
                 >
             </div>
             <div class="col-auto">
                 <button type="submit" 
                     class="btn btn-primary mb-3"
-                    onclick="upload_filestudent('img','foto_ing_firma', '<?=$_GET['codedni']?>AP');"
+                    onclick="upload_filestudent('img','foto_ing_firma', '<?=$_GET['codedni']?>AP','#base644');"
                 >
                     SUBIR
                 </button>
             </div>
+            <!-- base de codificacion para cargar archivo -->
+            <div class="container container-event" style="display:none">
+                <h5>Base de codificación de verificando de voucher</h5>
+                <textarea name="base64" id="base644" rows='8' cols='40' style="display:" disabled required></textarea>
+                <div id="img_otro">
+                <img src="" alt="Image preview" id="preview_new4" style="display:" disabled required>
+                </div>
+            </div>
+            <!-- base de codificacion para cargar archivo -->
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
             class="img_firma2"
@@ -150,16 +215,26 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile" 
-                    onchange = "readImage(this,'.img_voucher','#preview_new','#base64', 400, 650);">
+                    multiple="false" accept=".jpg, .jpeg, .png" 
+                    onchange = "readImage(this,'.img_voucher','#preview_new5','#base645', 400, 650);">
             </div>
             <div class="col-auto">
                 <button type="submit" 
                     class="btn btn-primary mb-3"
-                    onclick="upload_filestudent('img','foto_voucher', '<?=$_GET['codeproc']?><?=$_GET['codedni']?>');"
+                    onclick="upload_filestudent('img','foto_voucher', '<?=$_GET['codeproc']?><?=$_GET['codedni']?>','#base645');"
                 >
                     SUBIR
                 </button>
             </div>
+            <!-- base de codificacion para cargar archivo -->
+            <div class="container container-event" style="display:none">
+                <h5>Base de codificación de verificando de voucher</h5>
+                <textarea name="base64" id="base645" rows='8' cols='40' style="display:" disabled required></textarea>
+                <div id="img_otro">
+                <img src="" alt="Image preview" id="preview_new5" style="display:" disabled required>
+                </div>
+            </div>
+            <!-- base de codificacion para cargar archivo -->
         </form>
         <img 
             src="https://i.ibb.co/Tm3hb97/image.png"
@@ -170,29 +245,7 @@
     </div>    
 
 
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <label for="imageImport">Voucher</label>
-            <input id="imageImport" type="file" multiple="false" accept=".jpg, .jpeg, .png" class="form-control" required>
-            
-            <img id="blah" src="https://i.ibb.co/Br8tf3Y/Whats-App-Image-2020-09-26-at-12-50-00-PM.jpg" 
-            alt="Tu imagen" style="width: 100%; height: 200px;" />
-
-        </div>
-
-
 </div>
-
-
-
-
-  <div class="container container-event">
-    <h5>Base de codificación de verificando de voucher</h5>
-    <textarea name="base64" id="base64" rows='8' cols='40' disabled required></textarea>
-    <div id="img_otro">
-      <img src="" alt="Image preview" id="preview_new" style="display:">
-    </div>
-  </div>
-
 
 
 
@@ -216,25 +269,6 @@
             include_once("./views/_partials/cdns_footer.html");
         ?>
         <!-- SCRIPTS FOR THIS PAGE -->
-        <script>
-
-            function dat(fn){
-                setTimeout(() => {
-                    let res = {"res":22};
-                    fn(res);
-                }, 1200);
-            }
-
-            async function ok1(d){
-                console.log("listoo")
-                console.log(d)
-            }
-            
-
-            dat(ok1);
-
-        </script>
-
         <script src="./views/__js/<?=getNameJs()?>"></script>
 
 

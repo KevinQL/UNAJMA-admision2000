@@ -76,7 +76,7 @@
             
             file_put_contents($ruta_name, $file_img);
             
-            echo json_encode($data);
+            echo json_encode(["eval"=>true, "data"=>$data]);
 
         }
 

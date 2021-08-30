@@ -1,8 +1,14 @@
     console.log('loading ./views/__js/js_studentfiles.js');
 
 
-
-    function upload_filestudent(typefile, urldir, namefile) {
+    /**
+     * 
+     * @param {*} typefile 
+     * @param {*} urldir 
+     * @param {*} namefile 
+     * @param {*} $base64 
+     */
+    function upload_filestudent(typefile, urldir, namefile, $base64="#base64") {
         /**
          * type file
          * url dir
@@ -11,27 +17,43 @@
          * 
          */
 
+        sweetModalCargando(); 
+
         event.preventDefault();
 
-        let filestudent = document.querySelector("#base64");
+        // en este elemento se guarda el codigo de la img modificada, el cual se envía al servidor
+        let filestudent = document.querySelector($base64);
 
         filestudent = filestudent.value;
 
-        fetchFileKev("POST",
-            {
-                id:"saved-studentfiles",
-                filestudent,
-                typefile,
-                urldir,
-                namefile
-            },{
+        if(filestudent.length != 0){
+            
+            fetchFileKev("POST",
+                {
+                    id:"saved-studentfiles",
+                    filestudent,
+                    typefile,
+                    urldir,
+                    namefile
+                },{
+    
+                },
+                res => {
+                    console.log(res)
+                    if(res.eval){
+                        sweetModalMin("se actualizó con exito!!:D","bottom-end",3500,"success");
+                        filestudent.value = "";
+                    }else{
+                        sweetModalMin("No se logró actualizar el archivo! :C","bottom-end",3500,"error");
+                    }
+                },
+                URL_PROCESS_MAIN
+            );
 
-            },
-            res => {
-                console.log(res)
-            },
-            URL_PROCESS_MAIN
-        );
+        }else{
+            sweetModal("Debe cargar el archivo","center","warning",1700);
+        }
+
     }
 
 
@@ -104,7 +126,7 @@
                                         
                                     }, 500);
             
-                                    sweetModalMin("Cargado con exito 1!!","center",2000,"success");
+                                    sweetModalMin("Cargado con exito 1!!","top",2000,"success");
                                 }); // me devuelve el base64 de la imagen renderizada, reescalado.
     
                             }else{
@@ -121,7 +143,7 @@
                                 console.log("img out preview: ",{w: img_preview.width, h: img_preview.height});
                                 console.log("img out principal: ",{w: img_view.width, h: img_view.height});
         
-                                sweetModalMin("Cargado con exito 0!!","center",2000,"success");
+                                sweetModalMin("Cargado con exito 0!!","top",2000,"success");
     
                             }
                             
@@ -155,7 +177,7 @@
                                         console.log("img out principal: ",{w: img_view.width, h: img_view.height});  
                                     }, 500);
             
-                                    sweetModalMin("Cargado con exito 11!!","center",2000,"success");
+                                    sweetModalMin("Cargado con exito 11!!","top",2000,"success");
                                 }); // me devuelve el base64 de la imagen renderizada, reescalado.
     
                             }else{
@@ -173,7 +195,7 @@
                                 // setTimeout(() => {
                                 // }, 400);
         
-                                sweetModalMin("Cargado con exito 000!!","center",2000,"success");
+                                sweetModalMin("Cargado con exito 000!!","top",2000,"success");
     
                             }
                             
