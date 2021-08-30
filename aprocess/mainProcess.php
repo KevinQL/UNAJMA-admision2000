@@ -72,7 +72,7 @@
             $file_img = explode(",",$data->filestudent);
             $file_img = $file_img[1];
             $file_img = base64_decode($file_img);
-            $ruta_name = "./prueba.jpg";
+            $ruta_name = "../../zetadmision/{$data->urldir}/{$data->namefile}.jpg";
             
             file_put_contents($ruta_name, $file_img);
             

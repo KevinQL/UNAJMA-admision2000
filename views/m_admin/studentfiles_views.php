@@ -18,7 +18,7 @@
             include_once("./views/_components/presentacion-precarga.html");
         ?>
         
-        <!-- NAVEGACIÓN DE LAPAGINA DE ITEC -->
+        <!-- NAVEGACIÓN DE LAPAGINA -->
         <?php
             include_once( "./views/_secctions/nav_default.html");
         ?>
@@ -57,13 +57,13 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage(this,'.img_rostro','#base64', 150, 150);"
+                    onchange = "readImage(this,'.img_rostro','#preview_new','#base64', 150, 150);"
                 >
             </div>
             <div class="col-auto">
                 <button type="submit" 
                     class="btn btn-primary mb-3"
-                    onclick="upload_filestudent('img','files_img_foto');"
+                    onclick="upload_filestudent('img','foto_postulante', '<?=$_GET['codedni']?>');"
                 >
                     SUBIR
                 </button>
@@ -81,11 +81,16 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage2(this,'.img_dni','#base64', 400, 320);"
+                    onchange = "readImage(this,'.img_dni','#preview_new','#base64', 450, 370,'w');"
                 >
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">SUBIR</button>
+                <button type="submit" 
+                    class="btn btn-primary mb-3"
+                    onclick="upload_filestudent('img','foto_dni', '<?=$_GET['codedni']?>');"
+                >
+                    SUBIR
+                </button>
             </div>
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
@@ -99,11 +104,16 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage(this,'.img_firma1','#base64', 200, 150);"
+                    onchange = "readImage(this,'.img_firma1','#preview_new','#base64', 200, 150,'w');"
                 >
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">SUBIR</button>
+                <button type="submit" 
+                    class="btn btn-primary mb-3"
+                    onclick="upload_filestudent('img','foto_ing_firma', '<?=$_GET['codedni']?>');"
+                >
+                    SUBIR
+                </button>
             </div>
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
@@ -117,11 +127,16 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile"
-                    onchange = "readImage(this,'.img_firma2','#base64', 200, 150);"
+                    onchange = "readImage(this,'.img_firma2','#preview_new','#base64', 200, 150,'w');"
                 >
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">SUBIR</button>
+                <button type="submit" 
+                    class="btn btn-primary mb-3"
+                    onclick="upload_filestudent('img','foto_ing_firma', '<?=$_GET['codedni']?>AP');"
+                >
+                    SUBIR
+                </button>
             </div>
         </form>
         <img src="https://i.ibb.co/Tm3hb97/image.png" alt="" 
@@ -135,10 +150,15 @@
         <form class="row g-2">
             <div class="col-auto">
                 <input class="form-control" type="file" id="formFile" 
-                    onchange = "readImage(this,'.img_voucher','#base64', 400, 650);">
+                    onchange = "readImage(this,'.img_voucher','#preview_new','#base64', 400, 650);">
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-primary mb-3">SUBIR</button>
+                <button type="submit" 
+                    class="btn btn-primary mb-3"
+                    onclick="upload_filestudent('img','foto_voucher', '<?=$_GET['codeproc']?><?=$_GET['codedni']?>');"
+                >
+                    SUBIR
+                </button>
             </div>
         </form>
         <img 
