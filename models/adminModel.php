@@ -17,19 +17,19 @@
         protected function consultaInscripcion_Model($data){
 
             $eval = false;
-            $msj = "No se encontró registro!";
+            $msj = "Usted No Está registrado!";
             $data_res = [];
 
             $query = "SELECT * 
                         FROM adm_proceso_postulante p 
                         WHERE p.numerodocumento LIKE '%{$data->numerodocumento}%' 
-                        AND p.proceso IN ('{$data->proceso[0]}','{$data->proceso[1]}','{$data->proceso[2]}') 
+                        AND p.proceso IN ('{$data->proceso[1]}','{$data->proceso[2]}') 
                     ";
 
             $res = mainModel::ejecutar_una_consulta($query);
             $rowCount = $res->rowCount();
             if($res->rowCount() >= 1){
-                $msj = "Se encontró registro";
+                $msj = "Usted está registrado!";
                 $eval = true;
                 while ($register = $res->fetch(PDO::FETCH_ASSOC)) {
                     # code...

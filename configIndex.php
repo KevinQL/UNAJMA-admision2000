@@ -9,7 +9,7 @@
      * Desactiva todos los warinings del proyecto, (las notificaciónes PHP)
      * Ojo. Esto solo se debe habilitar en producción
      */
-    error_reporting(1);
+    // error_reporting(1);
     
     // Configura la fecha de america lima 
     date_default_timezone_set("America/Lima");

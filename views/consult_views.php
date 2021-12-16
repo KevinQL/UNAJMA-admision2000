@@ -49,7 +49,7 @@
             <form class="form-floating w-50 m-auto">
                 <input type="number" 
                     class="txt_dni form-control" 
-                    id="floatingInputValue" placeholder="7451..." value="74515444"
+                    id="floatingInputValue" placeholder="7451..." value=""
                 >
                 <label for="floatingInputValue">INGRESA TU DNI AQUÍ</label>
             </form>
