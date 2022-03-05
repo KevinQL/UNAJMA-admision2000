@@ -40,7 +40,8 @@
 
     <div class="container text-center khead-consult">
 
-            <h2>INGRESA TU NÚMERO DE DNI</h2>
+            <h2>ADMISIÓN UNAJMA 2022-1</h2>
+            <small>consulta inscripción</small>
             <!-- <input type="number" 
                 placeholder="INGRESA TU DNI"
                 class="txt_dni form-control w-50 m-auto"
@@ -51,7 +52,7 @@
                     class="txt_dni form-control" 
                     id="floatingInputValue" placeholder="7451..." value=""
                 >
-                <label for="floatingInputValue">INGRESA TU DNI AQUÍ</label>
+                <label for="floatingInputValue">INGRESA TU NÚMERO DE DNI AQUÍ</label>
             </form>
 
             <!-- Elemento hCaptcha -->

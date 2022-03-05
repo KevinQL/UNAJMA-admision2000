@@ -187,7 +187,7 @@ function exe_consult(){
 
     }else{
         // alert("Complete los datos correctamente!!!");
-        sweetModal("Complete los datos correctamente!!!", "center","warning",5000);
+        sweetModal("Ingrese DNI, o Compruebe que es un Postulante!!!", "center","warning",5000);
         setTimeout(() => {
             location.reload();
         }, 1300);
