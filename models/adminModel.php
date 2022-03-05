@@ -23,7 +23,7 @@
             $query = "SELECT * 
                         FROM adm_proceso_postulante p 
                         WHERE p.numerodocumento LIKE '%{$data->numerodocumento}%' 
-                        AND p.proceso IN ('{$data->proceso[1]}','{$data->proceso[2]}') 
+                        AND p.proceso IN ('{$data->proceso[0]}','{$data->proceso[1]}','{$data->proceso[2]}') 
                     ";
 
             $res = mainModel::ejecutar_una_consulta($query);

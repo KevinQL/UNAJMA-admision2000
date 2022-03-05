@@ -17,9 +17,9 @@
         public function consultaInscripcion_Controller($data){
             $dataModel = new StdClass;
             $dataModel->numerodocumento = trim($data->txt_dniv);
-            $dataModel->proceso[] = '0024';// proceso extraordinario. desactivado en la consulta para el ordinario
-            $dataModel->proceso[] = '0025';
-            $dataModel->proceso[] = '0026';
+            $dataModel->proceso[] = '0030';// proceso extraordinario. desactivado en la consulta para el ordinario
+            $dataModel->proceso[] = '0031';
+            $dataModel->proceso[] = '0032';
 
             $res = self::consultaInscripcion_Model($dataModel);
             return $res;
@@ -84,7 +84,7 @@
             $pagina = strtolower(trim($pagina));
 
             $moduloTest = [ "m_test/main"];
-            $arrayPaginas = [ "login", "registrate", "web", "consult", "generartxt"];
+            $arrayPaginas = [ "login", "registrate", "web", "consult"];
 
             $arrayPaginas = array_merge($arrayPaginas, $moduloTest);
 
