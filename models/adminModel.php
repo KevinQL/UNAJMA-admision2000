@@ -37,7 +37,27 @@
                 }
             }
 
-            return ["eval"=>$eval, "data"=>$data_res, "msj"=>$msj, "rowCount"=>$rowCount];
+            /**
+             * Documento PDF
+             */
+            $file_pdf = false;
+            $path = "./../../zetadmision/foto_documento/".$data_res[0]['proceso']."{$data->numerodocumento}.pdf";
+
+            if (file_exists($path)) {
+                $file_pdf = true;
+            }
+
+            /**
+             * Firma postulante
+             */
+            $file_firma = false;
+            $path = "./../../zetadmision/foto_ing_firma/{$data->numerodocumento}.jpg";
+
+            if (file_exists($path)) {
+                $file_firma = true;
+            }
+
+            return ["eval"=>$eval, "data"=>$data_res, "msj"=>$msj, "rowCount"=>$rowCount, "rs_pdf"=>$file_pdf, "rs_firma"=>$file_firma];
         }
 
 

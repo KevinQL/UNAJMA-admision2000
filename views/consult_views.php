@@ -84,7 +84,12 @@
      -->
 
 
-
+<div class="py-3 px-2 bg-light">
+    <small class="result_valid">
+        ADMISIÓN TE INFORMA: 
+        <span class="text-warning">Espera atento a tu correo y telefono celular...</span>
+    </small>
+</div>
 <div class="accordion accordion-flush" id="accordionFlushExample">
     
     <div class="accordion-item">

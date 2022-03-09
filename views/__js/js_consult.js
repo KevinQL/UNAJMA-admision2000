@@ -5,6 +5,8 @@ console.log("CARGADO => js_consult.js");
 function data_consult(){
     let txt_dni = document.querySelector(".txt_dni");
 
+    let result_valid = document.querySelector(".result_valid");
+
     let res_preinscripcion = document.querySelector(".res_preinscripcion");
     let res_correo = document.querySelector(".res_correo");
     let res_pdf = document.querySelector(".res_pdf");
@@ -22,6 +24,8 @@ function data_consult(){
     return {
         elements : {
             txt_dni,
+
+            result_valid,
 
             res_preinscripcion,
             res_correo,
@@ -50,13 +54,13 @@ function eval_consult(){
 
     if(txt_dni.value.length === 0 || txt_dni.value.length < 8) result = false;
 
-    if( h_captcha_response.value.length === 0 ){
-        result = false;
-        hcaptcha.value = "";
-    }else{
+    // if( h_captcha_response.value.length === 0 ){
+    //     result = false;
+    //     hcaptcha.value = "";
+    // }else{
 
-        hcaptcha.value = h_captcha_response.value;
-    }
+    //     hcaptcha.value = h_captcha_response.value;
+    // }
 
     return result;
 }
@@ -67,6 +71,8 @@ function exe_consult(){
     let { txt_dniv } = data.values;
     let {
         txt_dni,
+
+        result_valid,
 
         res_preinscripcion,
         res_correo,
@@ -85,6 +91,8 @@ function exe_consult(){
     // return null;
 
     if(eval_consult()){
+
+        sweetModalCargando()
 
         // console.log(txt_dniv);
 
@@ -147,12 +155,26 @@ function exe_consult(){
 
                          if(student.dj === "1"){
                              res_dj.innerHTML = `<span class="text-success">(LISTO...)</span>`;
+                             res_constancia.innerHTML = `<span class="text-success">(YA PUEDE DESCARAGARLO!)</span>`;
                          }
+
+                        if(res.rs_pdf){
+                            res_pdf.innerHTML = `<span class="text-success">(LISTO...)</span>`;                             
+                        }
+
+                        if(res.rs_firma){
+                             res_firma.innerHTML = `<span class="text-success">(LISTO...)</span>`;
+                        }
 
                          if(student.validado === "1"){
                              res_pdf.innerHTML = `<span class="text-success">(LISTO...)</span>`;
                              res_firma.innerHTML = `<span class="text-success">(LISTO...)</span>`;
                              res_constancia.innerHTML = `<span class="text-success">(YA PUEDE DESCARAGARLO!)</span>`;
+
+                            result_valid.innerHTML = `ADMISIÓN TE INFORMA: <span class="text-success">Tu inscripción ya está validado. :D</span>`;
+                         }else{
+                            result_valid.innerHTML = `ADMISIÓN TE INFORMA: 
+                            <span class="text-danger">Todavía no se validó tu inscripción. En breve el personal revisará tus datos y archivos. Tenga paciencia. Gracias.</span>`;
                          }
 
 
@@ -224,7 +246,7 @@ function exe_consult(){
         /**
         * Starting function for watch the captcha
         */
-        watching();
+        // watching();
 
     }, 3000);
 })
