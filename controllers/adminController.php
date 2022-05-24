@@ -17,9 +17,12 @@
         public function consultaInscripcion_Controller($data){
             $dataModel = new StdClass;
             $dataModel->numerodocumento = trim($data->txt_dniv);
-            $dataModel->proceso[] = '0030';// proceso extraordinario. desactivado en la consulta para el ordinario
-            $dataModel->proceso[] = '0031';
-            $dataModel->proceso[] = '0032';
+            /** 
+             * Estos procesos se desactivan a medida que se van dando cada proceso
+            */
+            $dataModel->proceso[] = '0030'; // proceso ordinario 20221
+            $dataModel->proceso[] = '0031'; // proceso extraordinario 20221
+            $dataModel->proceso[] = '0032'; // proceso cepre 20221 CERRADO
 
             $res = self::consultaInscripcion_Model($dataModel);
             return $res;

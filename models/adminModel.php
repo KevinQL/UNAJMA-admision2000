@@ -20,11 +20,20 @@
             $msj = "Usted No Está registrado!";
             $data_res = [];
 
-            $query = "SELECT * 
-                        FROM adm_proceso_postulante p 
-                        WHERE p.numerodocumento LIKE '%{$data->numerodocumento}%' 
-                        AND p.proceso IN ('{$data->proceso[0]}','{$data->proceso[1]}','{$data->proceso[2]}') 
-                    ";
+            if(false){
+                $query = "SELECT * 
+                            FROM adm_proceso_postulante p 
+                            WHERE p.numerodocumento LIKE '%{$data->numerodocumento}%' 
+                            AND p.proceso IN ('{$data->proceso[0]}','{$data->proceso[1]}','{$data->proceso[2]}') 
+                        ";
+            }else{
+                $query = "SELECT * 
+                            FROM adm_proceso_postulante p 
+                            WHERE p.numerodocumento LIKE '%{$data->numerodocumento}%' 
+                            AND p.proceso IN ('{$data->proceso[0]}','{$data->proceso[1]}') 
+                        ";
+            }
+            
 
             $res = mainModel::ejecutar_una_consulta($query);
             $rowCount = $res->rowCount();
